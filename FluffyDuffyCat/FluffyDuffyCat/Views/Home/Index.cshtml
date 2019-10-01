@@ -1,0 +1,24 @@
+﻿@model IEnumerable<CatViewModel>
+
+@{
+    Layout = "_Layout";
+    var title = "READ Cats";
+    ViewData["Title"] = title;
+}
+<tbody>
+    @if (Model == null)
+    {
+        <tr>
+            <td colspan="7" class="text-center">No Model Data</td>
+        </tr>
+    }
+    else
+    {
+        @foreach (var p in Model)
+        {
+            <a href="@Url.Action("Details", "Cat", new { id = p.CatId})">@Html.DisplayFor(modelItem => p.Name)</a>
+            <p></p>
+        }
+    }
+</tbody>
+<a class="btn btn-danger" href="@Url.Action("Create", "Cat")">Add Cat</a>
